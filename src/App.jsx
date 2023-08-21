@@ -13,6 +13,7 @@ export default function App() {
          title:newItem, completed:false},
        ]
     })
+    setNewItem("")
   }
   
   return (
@@ -29,7 +30,7 @@ export default function App() {
     <ul className="list">
     {todos.map(todo => {
       return (
-        <li key={todo.id}>
+        <li key={todo.id}>  
         <label> 
           <input type="checkbox" checked={todo.completed}/>
            {todo.title}
