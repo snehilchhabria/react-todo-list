@@ -3,19 +3,32 @@ import "./styles.css"
 
 export default function App() {
   const [newItem, setNewItem] = useState("") //newItem is the fixed value and setNewItem is the new value we will keep mpdifying while using
+  const [todos, setTodos] = useState([])
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    setTodos(currentTodos => {
+      return [
+        ...currentTodos, { id: crypt.randomUUID(),
+         title:newItem, completed:false},
+       ]
+    })
+  }
+  
   return (
     <>
-    <form className="new-item-form">
+    <form onSubmit ={handleSubmit}className="new-item-form">
       <div className="form-row">
         <label htmlFor="item">New Item</label>
         <input value={newItem} onChange={e => setNewItem(e.target.value)}
         type="text" id="item" />
       </div>
+      <button className="btn">Add</button>
     </form>
     <h1 className="header">Todo List</h1>
     <ul className="list">
       <li>
-        <label>
+        <label> 
           <input type="checkbox" />
           Item 1
         </label>
@@ -29,6 +42,7 @@ export default function App() {
         <button className="btn btn-danger">Delete</button>
       </li>
     </ul>
+    
     </>
   )
 }
