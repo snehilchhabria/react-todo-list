@@ -1,21 +1,19 @@
 import { useState } from "react"
 import "./styles.css"
+import { NewTodoForm } from "./NewTodoForm"
 
 export default function App() {
-  const [newItem, setNewItem] = useState("") //newItem is the fixed value and setNewItem is the new value we will keep mpdifying while using
-  const [todos, setTodos] = useState([])
-  function handleSubmit(e) {
-    e.preventDefault()
 
+  const [todos, setTodos] = useState([])
+  
+  function addTodo(title) {
     setTodos(currentTodos => {
       return [
         ...currentTodos, { id: crypto.randomUUID(),
-         title:newItem, completed:false},
+         title, completed:false},
        ]
     })
-    setNewItem("")
   }
-  
   function toggleTodo(id, completed) {
     setTodos(currentTodos => {
       return currentTodos.map(todo => {
@@ -35,14 +33,7 @@ export default function App() {
 
   return (
     <>
-    <form onSubmit ={handleSubmit}className="new-item-form">
-      <div className="form-row">
-        <label htmlFor="item">New Item</label>
-        <input value={newItem} onChange={e => setNewItem(e.target.value)}
-        type="text" id="item" />
-      </div>
-      <button className="btn">Add</button>
-    </form>
+    <NewTodoForm />
     <h1 className="header">Todo List</h1>
     <ul className="list">
     {todos.map(todo => {
