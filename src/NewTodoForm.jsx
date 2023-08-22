@@ -1,15 +1,16 @@
 import { useState } from "react"
 
-export function NewTodoForm() {
+export function NewTodoForm({onSubmission}) {
+    
     const [newItem, setNewItem] = useState("") //newItem is the fixed value and setNewItem is the new value we will keep mpdifying while using
 
     function handleSubmit(e) {
         e.preventDefault()
         if(newItem === "") return
-        addTodo(newItem)
+        onSubmission(newItem) //prop usage
         setNewItem("")
       }
-
+   
     return (
         <form onSubmit ={handleSubmit}className="new-item-form">
       <div className="form-row">
