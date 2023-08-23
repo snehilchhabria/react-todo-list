@@ -10,6 +10,9 @@ Currently, two official plugins are available:
 # React Todo List
 
 This is a basic Todo List application built using React. It allows you to add, edit, and mark tasks as complete. It's a great starting point to understand the fundamentals of React.
+![Screenshot (96)](https://github.com/snehilchhabria/react-todo-list/assets/114361719/0604faab-66e1-47ba-a8d4-7e3e32eddc85)
+
+
 
 ## Features
 
